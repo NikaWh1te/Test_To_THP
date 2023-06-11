@@ -1,0 +1,211 @@
+using System; 
+
+using System.Collections.Generic; 
+
+using System.ComponentModel; 
+
+using System.Data; 
+
+using System.Drawing; 
+
+using System.Linq; 
+
+using System.Text; 
+
+using System.Threading.Tasks; 
+
+using System.Windows.Forms; 
+
+using MusicLibrary; 
+
+ 
+
+namespace Musics 
+
+{ 
+
+    public partial class FormAdd : Form 
+
+    { 
+
+        Form1 form1; 
+
+        public FormAdd(Form1 owner) 
+
+        { 
+
+            form1 = owner; 
+
+            InitializeComponent(); 
+
+        } 
+
+ 
+
+ 
+
+        private void OKbutton_Click(object sender, EventArgs e) 
+
+        { 
+
+            if (ClassBox.SelectedItem.ToString() == "Rock Music") 
+
+            { 
+
+                var rock = new MusicLibrary.Rock(); 
+
+                rock.SetName(NameTextBox.Text); 
+
+                rock.SetArtist(ArtistTextBox.Text); 
+
+                rock.SetDuration(Convert.ToDouble(DurationTextBox.Text)); 
+
+                rock.SetGuitarsound(Convert.ToDouble(GuitarsoundTextBox.Text)); 
+
+                Class1.asm.musicList.Add(rock); 
+
+                form1.ListOfMusicBox.Items.Add(Class1.asm.musicList[Class1.asm.musicList.Count() - 1].GetName()); 
+
+                form1.DurationLabel.Text = Class1.asm.GetTotalDuration().ToString(); 
+
+                this.Close(); 
+
+            } 
+
+            if (ClassBox.SelectedItem.ToString() == "Rap Music") 
+
+            { 
+
+                var rap = new MusicLibrary.Rap(); 
+
+                rap.SetName(NameTextBox.Text); 
+
+                rap.SetArtist(ArtistTextBox.Text); 
+
+                rap.SetDuration(Convert.ToDouble(DurationTextBox.Text)); 
+
+                rap.SetFlow(Convert.ToDouble(FlowTextBox.Text)); 
+
+                Class1.asm.musicList.Add(rap); 
+
+                form1.ListOfMusicBox.Items.Add(Class1.asm.musicList[Class1.asm.musicList.Count() - 1].GetName()); 
+
+                form1.DurationLabel.Text = Class1.asm.GetTotalDuration().ToString(); 
+
+                this.Close(); 
+
+            } 
+
+            if (ClassBox.SelectedItem.ToString() == "Phonk Music") 
+
+            { 
+
+                var phonk = new MusicLibrary.Phonk(); 
+
+                phonk.SetName(NameTextBox.Text); 
+
+                phonk.SetArtist(ArtistTextBox.Text); 
+
+                phonk.SetDuration(Convert.ToDouble(DurationTextBox.Text)); 
+
+                phonk.SetFlow(Convert.ToDouble(FlowTextBox.Text)); 
+
+                phonk.SetCowbells(CowbellsTextBox.Text); 
+
+                Class1.asm.musicList.Add(phonk); 
+
+                form1.ListOfMusicBox.Items.Add(Class1.asm.musicList[Class1.asm.musicList.Count() - 1].GetName()); 
+
+                form1.DurationLabel.Text = Class1.asm.GetTotalDuration().ToString(); 
+
+                this.Close(); 
+
+            } 
+
+        } 
+
+ 
+
+        private void CancelButton_Click(object sender, EventArgs e) 
+
+        { 
+
+           this.Close(); 
+
+        } 
+
+ 
+
+        private void FormAdd_Load(object sender, EventArgs e) 
+
+        { 
+
+ 
+
+        } 
+
+ 
+
+        private void ClassBox_SelectedIndexChanged(object sender, EventArgs e) 
+
+        { 
+
+            if (ClassBox.SelectedItem.ToString() == "Rock Music") 
+
+            { 
+
+                GuitarsoundLabel.Enabled = true; 
+
+                GuitarsoundTextBox.Enabled = true; 
+
+                FlowLabel.Enabled = false; 
+
+                FlowTextBox.Enabled = false; 
+
+                CowbellsLabel.Enabled = false; 
+
+                CowbellsTextBox.Enabled = false; 
+
+            } 
+
+            if (ClassBox.SelectedItem.ToString() == "Rap Music") 
+
+            { 
+
+                FlowLabel.Enabled = true; 
+
+                FlowTextBox.Enabled = true; 
+
+                GuitarsoundLabel.Enabled = false; 
+
+                GuitarsoundTextBox.Enabled = false; 
+
+                CowbellsLabel.Enabled = false; 
+
+                CowbellsTextBox.Enabled = false; 
+
+            } 
+
+            if (ClassBox.SelectedItem.ToString() == "Phonk Music") 
+
+            { 
+
+                FlowLabel.Enabled = true; 
+
+                FlowTextBox.Enabled = true; 
+
+                CowbellsLabel.Enabled = true; 
+
+                CowbellsTextBox.Enabled = true; 
+
+                GuitarsoundLabel.Enabled = false; 
+
+                GuitarsoundTextBox.Enabled = false; 
+
+            } 
+
+        } 
+
+    } 
+
+} 
